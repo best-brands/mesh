@@ -1,0 +1,131 @@
+@import "./mixin";
+
+* {
+  margin: 0;
+  padding: 0
+}
+
+*, :before, :after {
+  box-sizing: border-box
+}
+
+html {
+  // Align REM units to pixel units
+  font-size: 62.5%;
+  height: 100%;
+  margin: 0;
+  // Minimum viewport width
+  min-width: 300px;
+  padding: 0;
+  -webkit-text-size-adjust: none
+}
+
+body {
+  // Now we set the font-size to 13px on normal sizes (1 REM is now 10px)
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+// Grid sections should not have trailing margins
+[class*=mesh-section] > :last-child {
+  margin-bottom: 0 !important
+}
+
+[class*=mesh-section] > :last-child > :last-child {
+  margin-bottom: 0 !important
+}
+
+// Initialize push / pull, this is absolute when no css-grid is detected
+[class*='mesh-container'] [class*='--pull-'],
+[class*='mesh-container'] [class*='--push-'] {
+  position: relative;
+  clear: none
+}
+
+// If it supports display grid, we should reset to static
+@supports (display:grid) {
+  [class*='mesh-container'] [class*='--pull-'],
+  [class*='mesh-container'] [class*='--push-'] {
+    position: static
+  }
+}
+
+// Default mesh-unit, min-height is 1px in case you use it as spacing
+[class*=mesh-unit] {
+  float: left;
+  width: 100%;
+  min-height: 1px
+}
+
+// Grid units should not have trailing margins
+[class*=mesh-unit] > :last-child {
+  margin-bottom: 0 !important
+}
+
+// Grid containers should be reset with clear-fixes
+[class*=mesh-container]:before,
+[class*=mesh-container]:after {
+  content: ' ';
+  display: table
+}
+
+// Clear both after
+[class*=mesh-container]:after {
+  clear: both
+}
+
+// When we support grid, we set some different defaults to use
+// the faster to render css-grid
+@supports (display:grid) {
+  [class*=mesh-container] {
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-columns: 1fr
+  }
+
+  [class*=mesh-container]:before,
+  [class*=mesh-container]:after {
+    display: none
+  }
+
+  [class*='mesh-container'] > [class*='mesh-unit'] {
+    width: 100%
+  }
+
+  [class*=mesh-container] {
+    grid-template-columns: repeat(12, 1fr)
+  }
+
+  @supports (grid-template-columns:minmax(0,1.1rem)) {
+    [class*=mesh-container] {
+      grid-template-columns: repeat(12, minmax(0, 1fr))
+    }
+  }
+}
+
+// XS viewport
+grid("xs", 320);
+
+// S viewport
+@media only screen and (min-width: 501px) {
+}
+
+// M viewport
+@media only screen and (min-width: 668px) {
+grid("m", 668);
+}
+
+// L viewport
+@media only screen and (min-width: 901px) {
+grid("l", 901);
+}
+
+// XL viewport
+@media only screen and (min-width: 1024px) {
+grid("xl", 1024);
+}
+
+// XXL viewport
+@media only screen and (min-width: 1280px) {
+grid("xxl", 1280);
+}
