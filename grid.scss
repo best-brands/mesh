@@ -104,7 +104,7 @@ body {
 }
 
 // XS viewport
-grid("xs", 320);
+@include grid("xs", 320);
 
 // S viewport
 @media only screen and (min-width: 501px) {
@@ -112,20 +112,20 @@ grid("xs", 320);
 
 // M viewport
 @media only screen and (min-width: 668px) {
-grid("m", 668);
+  @include grid("m", 668);
 }
 
 // L viewport
 @media only screen and (min-width: 901px) {
-grid("l", 901);
+  @include grid("l", 901);
 }
 
 // XL viewport
 @media only screen and (min-width: 1024px) {
-grid("xl", 1024);
+  @include grid("xl", 1024);
 }
 
 // XXL viewport
 @media only screen and (min-width: 1280px) {
-grid("xxl", 1280);
+  @include grid("xxl", 1280);
 }

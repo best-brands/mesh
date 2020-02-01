@@ -1,6 +1,6 @@
 @mixin grid ($breakpoint, $width, $mesh-section: true, $mesh-pull-push: true, $mesh-gap: true) {
   [class*=mesh-wrapper--max-width-#{$breakpoint}] {
-    max-width: $width + "px"
+    max-width: $width + px
   }
 
   [class*=mesh-wrapper--centered-#{$breakpoint}] {
@@ -20,14 +20,14 @@
   @if $mesh-section {
     @for $i from 1 through 6 {
       .mesh-section-#{$breakpoint}--gap-#{$i}:not(:first-child) {
-        margin-top: ($i * .4) + "rem"
+        margin-top: ($i * .4) + rem
       }
     }
   }
 
   @for $i from 1 through 12 {
     .mesh-unit-#{$breakpoint}--col-#{$i} {
-      width: ($i / 12 * 100) + "%"
+      width: percentage($i / 12)
     }
 
     @supports (display:grid) {
@@ -52,7 +52,7 @@
 
     @for $i from 1 through 6 {
       .mesh-unit-#{$breakpoint}--pull-col-#{$i} {
-        left: ($i / 12 * -100) + "%"
+        left: percentage($i / -12)
       }
 
       @supports (display:grid) {
@@ -63,7 +63,7 @@
       }
 
       .mesh-unit-#{$breakpoint}--push-col-#{$i} {
-        left: ($i / 12 * 100) + "%"
+        left: percentage($i / 12)
       }
 
       @supports (display:grid) {
@@ -89,18 +89,18 @@
       @for $i from 1 through 10 {
         @if $i <= 4 or $i % 2 == 0 {
           .mesh-container-#{$breakpoint}--gap-#{$i}--#{$direction} {
-            margin-right: (-.2 * $i) + "rem";
-            margin-left: (-.2 * $i) + "rem";
+            margin-right: (-.2 * $i) + rem;
+            margin-left: (-.2 * $i) + rem;
 
             > [class*=mesh-unit] {
-              padding: 0 ($i * .2) + "rem"
+              padding: 0 ($i * .2) + rem
             }
           }
 
           @supports (display:grid) {
             .mesh-container-#{$breakpoint}--gap-#{$i}--#{$direction} {
               margin: 0;
-              grid-column-gap: ($i * .4) + "rem";
+              grid-column-gap: ($i * .4) + rem;
 
               > [class*=mesh-unit] {
                 padding: 0
@@ -134,5 +134,68 @@
   [class*=mesh-wrapper-#{$breakpoint}--layout-wrapper] {
     max-width: 128rem;
     margin: 0 auto
+  }
+
+  /**
+   * Cards for stacking content items easily
+   */
+
+  .mesh-card-from-size-#{$breakpoint} {
+    padding: 3.2rem;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  @for $i from 1 through 3 {
+    .mesh-card-from-size-#{$breakpoint}--with-gap-#{$i} {
+      padding: ($i * .4) + rem;
+    }
+  }
+
+  .mesh-card-from-size-#{$breakpoint} {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: bottom;
+  }
+
+  /**
+   * Utility functions for easier content control
+   */
+
+  .is-hidden-from-size-#{$breakpoint} {
+    display: none !important;
+  }
+
+  .is-visible-from-size-#{$breakpoint} {
+    display: block !important;
+  }
+
+  .is-visible-inline-from-size-s-#{$breakpoint} {
+    display: inline !important;
+  }
+
+  .is-visible-inline-block-from-size-#{$breakpoint} {
+    display: inline-block !important;
+  }
+
+  .is-visible-flex-from-size-#{$breakpoint} {
+    display: flex !important;
+  }
+
+  .is-visible-inline-flex-from-size-#{$breakpoint} {
+    display: inline-flex !important;
+  }
+
+  .text-align-center-from-size-#{$breakpoint} {
+    text-align: center !important;
+  }
+
+  .text-align-left-from-size-#{$breakpoint} {
+    text-align: left !important;
+  }
+
+  .text-align-right-from-size-#{$breakpoint} {
+    text-align: right !important;
   }
 }
