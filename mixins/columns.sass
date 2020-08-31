@@ -11,9 +11,9 @@
 
   @for $i from 1 through $column-count
     .col-#{$breakpoint}-#{$i}
-      -ms-flex-preferred-size: percentage($i / 12)
-      flex-basis: percentage($i / 12)
-      max-width: percentage($i / 12)
+      -ms-flex-preferred-size: percentage($i / $column-count)
+      flex-basis: percentage($i / $column-count)
+      max-width: percentage($i / $column-count)
 
   @each $push in $pushes
     .col-#{$breakpoint}--push-col-#{$push}
