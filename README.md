@@ -22,11 +22,11 @@ Using the mesh is quite easy. To create your common product grid that you
 see on most e-commerce sites these days, you can initialize it  as follows:
 
 ```html
-<div class="mesh-container">
-  <div class="mesh-unit-xs--col-12 mesh-unit-l--col-6 mesh-unit-xl--col-4">
+<div class="col-container">
+  <div class="col-xs-12 col-l-6 col-xl-4">
     Item 1
   </div>
-  <div class="mesh-unit-xs--col-12 mesh-unit-l--col-6 mesh-unit-xl--col-4">
+  <div class="col-xs-12 col-l-6 col-xl-4">
     Item 2
   </div>
   ...
@@ -39,9 +39,9 @@ You can also nest meshes. Because it utilizes margin collapsing, your grid
 will always remain aligned perfectly.
 
 ```html
-<div class="mesh-container">
-  <div class="mesh-unit-xs--col-12 mesh-unit-l--col-6 mesh-unit-xl--col-4">
-    <div class="mesh-container">
+<div class="col-container">
+  <div class="col-xs-12 col-l-6 col-xl-4">
+    <div class="col-container">
       ...
     </div>
   </div>
@@ -54,7 +54,7 @@ You can also add spacing between your grid elements by adding more classes
 to your grid container element:
 
 ```html
-<div class="mesh-container mesh-container-xs--gap-4--x mesh-container-xs--gap-2--y">
+<div class="col-container col-container-xs--gap-4--x col-container-xs--gap-2--y">
 </div>
 ```
 
@@ -65,15 +65,15 @@ will add proper spacing between stacked elements without making the last
 item overflow and misalign the mesh:
 
 ```html
-<div class="mesh-container">
-  <div class="mesh-unit-xs--col-12 mesh-unit-l--col-6 mesh-unit-xl--col-4">
-    <div class="mesh-section-xs--gap-4">
+<div class="col-container">
+  <div class="col-xs-12 col-l-6 col-xl-4">
+    <div class="section-xs-4">
       This element will not have any margin on the top
     </div>
-    <div class="mesh-section-xs--gap-4">
+    <div class="section-xs-4">
       This element will have margin on the top to space the elements
     </div>
-    <div class="mesh-section-xs--gap-4">
+    <div class="section-xs-4">
       This one too
     </div>
   </div>
@@ -86,10 +86,10 @@ You can also pull and push units, so that you dont have to add garbage units
 to align something accordingly. So now you dont have to do this:
 
 ```html
-<div class="mesh-container">
-  <div class="mesh-unit-xs--col-5">
+<div class="col-container">
+  <div class="col-xs-5">
   </div>
-  <div class="mesh-unit-xs--col-7">
+  <div class="col-xs-7">
   </div>
 </div>
 ```
@@ -97,8 +97,8 @@ to align something accordingly. So now you dont have to do this:
 But instead you can do this:
 
 ```html
-<div class="mesh-container">
-  <div class="mesh-unit-xs--col-7 mesh-unit--push-col-5">
+<div class="col-container">
+  <div class="col-xs-7 col-xs--push-col-5">
   </div>
 </div>
 ```

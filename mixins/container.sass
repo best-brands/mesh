@@ -1,0 +1,16 @@
+@mixin container($breakpoint, $gaps-x: (1, 2, 3, 4, 6), $gaps-y: (1, 2, 3, 4, 6))
+  @each $gap-x in $gaps-x
+    .col-container-#{$breakpoint}--gap-#{$gap-x}--x
+      margin-right: (-.2 * $gap-x) + rem
+      margin-left: (-.2 * $gap-x) + rem
+
+      > [class*=col]
+        padding-right: ($gap-x * .2) + rem
+        padding-left: ($gap-x * .2) + rem
+
+  @each $gap-y in $gaps-y
+    .col-container-#{$breakpoint}--gap-#{$gap-y}--y
+      margin-top: (-0.4 * $gap-y) + rem
+
+      > [class*=col]
+        margin-top: (.4 * $gap-y) + rem

@@ -1,0 +1,4 @@
+@mixin section($breakpoint, $sizes: (0, 1, 2, 3, 4, 5, 6, 8))
+  @each $size in $sizes
+    .section-#{$breakpoint}-#{$size}:not(:first-child)
+      margin-top: ($size * .4) + rem

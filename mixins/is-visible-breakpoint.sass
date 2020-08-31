@@ -1,0 +1,10 @@
+@mixin is-visible-breakpoint($breakpoint, $properties: (none, block, inline, inline-block, flex))
+  .is-hidden-from-size-#{$breakpoint}
+    display: none !important
+
+  .is-visible-from-size-#{$breakpoint}
+    display: block !important
+
+  @each $property in $properties
+    .is-visible-#{$property}-from-size-#{$breakpoint}
+      display: $property !important

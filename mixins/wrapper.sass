@@ -1,0 +1,23 @@
+@mixin wrapper($breakpoint, $width, $padding)
+  [class*=mesh-wrapper--max-width-#{$breakpoint}]
+    max-width: $width + px
+
+  [class*=mesh-wrapper--centered-#{$breakpoint}]
+    margin: 0 auto
+
+  [class*=mesh-wrapper--relative-#{$breakpoint}]
+    position: relative
+    height: 100%
+
+  [class*=wrapper-#{$breakpoint}--inverted-margin]
+    margin: 0 ($padding / 10 * -1) + rem
+
+  [class*=wrapper-#{$breakpoint}--inverted-margin-s]
+    margin: 0 -1.2rem
+
+  [class*=wrapper-#{$breakpoint}--padding]
+    padding: 0 ($padding / 10) + rem
+
+  [class*=wrapper-#{$breakpoint}--layout-wrapper]
+    max-width: 128rem
+    margin: 0 auto

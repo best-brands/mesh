@@ -1,0 +1,20 @@
+@mixin columns($breakpoint, $pushes: (1, 2, 3, 4, 5, 6), $column-count: 12)
+  [class*=col-#{$breakpoint}]
+    box-sizing: border-box
+    -webkit-box-flex: 0
+    -ms-flex: 0 0 auto
+    flex: 0 0 auto
+    margin: 0
+
+    > :last-child
+      margin-bottom: 0 !important
+
+  @for $i from 1 through $column-count
+    .col-#{$breakpoint}-#{$i}
+      -ms-flex-preferred-size: percentage($i / 12)
+      flex-basis: percentage($i / 12)
+      max-width: percentage($i / 12)
+
+  @each $push in $pushes
+    .col-#{$breakpoint}--push-col-#{$push}
+      margin-left: percentage($push / 12)
