@@ -2,63 +2,57 @@
 @import mixins/container
 @import mixins/is-visible-breakpoint
 @import mixins/section
-@import mixins/text-align
 @import mixins/wrapper
 
-@mixin grid--xs()
-  [class*=section]
+[class*=section]
+  > :last-child
+    margin-bottom: 0 !important
+
     > :last-child
       margin-bottom: 0 !important
 
-      > :last-child
-        margin-bottom: 0 !important
+[class*=col-container]
+  box-sizing: border-box
+  display: -webkit-box
+  display: -ms-flexbox
+  display: flex
+  -webkit-box-flex: 0
+  -ms-flex: 0 1 auto
+  flex: 0 1 auto
+  -webkit-box-orient: horizontal
+  -webkit-box-direction: normal
+  -ms-flex-direction: row
+  flex-direction: row
+  -ms-flex-wrap: wrap
+  flex-wrap: wrap
 
-  [class*=col-container]
-    box-sizing: border-box
-    display: -webkit-box
-    display: -ms-flexbox
-    display: flex
-    -webkit-box-flex: 0
-    -ms-flex: 0 1 auto
-    flex: 0 1 auto
-    -webkit-box-orient: horizontal
-    -webkit-box-direction: normal
-    -ms-flex-direction: row
-    flex-direction: row
-    -ms-flex-wrap: wrap
-    flex-wrap: wrap
+@include wrapper('xs', 320, 12)
+@include section('xs')
+@include columns('xs')
+@include container('xs')
+@include is-visible-breakpoint('xs')
 
-  @include wrapper('xs', 320, 12)
-  @include section('xs')
-  @include columns('xs')
-  @include container('xs')
-  @include is-visible-breakpoint('xs')
-  @include text-align('xs')
-
-@mixin grid--s()
+@media only screen and (min-width: 501px)
   @include wrapper('s', 501, 16)
   @include columns('s')
   @include container('s', (), ())
   @include is-visible-breakpoint('s')
 
-@mixin grid--m()
+@media only screen and (min-width: 668px)
   @include wrapper('m', 668, 16)
   @include section('m')
   @include columns('m')
   @include container('m')
   @include is-visible-breakpoint('m')
-  @include text-align('m')
 
-@mixin grid--l()
+@media only screen and (min-width: 901px)
   @include wrapper('l', 1024, 16)
   @include section('l')
   @include columns('l')
   @include container('l')
   @include is-visible-breakpoint('l')
-  @include text-align('l')
 
-@mixin grid--xl()
+@media only screen and (min-width: 1024px)
   @include container('xl')
   @include columns('xl')
   @include is-visible-breakpoint('xl')
-  @include text-align('xl')
